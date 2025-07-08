@@ -88,3 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// Close sidebar with ❌ button
+document.getElementById("closeSidebar").addEventListener("click", () => {
+  document.getElementById("sandboxListPanel").style.display = "none";
+});
+

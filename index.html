@@ -15,28 +15,46 @@
   </header>
   <main>
   <div id="filters" style="text-align:center; padding: 1rem;">
-    <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
-    <select id="fundingFilter">
-      <option value="all">All</option>
-      <option value="DOE">DOE</option>
-      <option value="NSF">NSF</option>
-      <option value="CHIPS">CHIPS</option>
-      <option value="DoD">DoD</option>
-      <option value="Private">Private</option>
-    </select>
+  <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
+  <select id="fundingFilter">
+    <option value="all">All</option>
+    <option value="DOE">DOE</option>
+    <option value="NSF">NSF</option>
+    <option value="DoD">DoD</option>
+    <option value="Private">Private</option>
+    <option value="DOE / NSF">DOE / NSF</option>
+    <option value="DoD/DOE">DoD/DOE</option>
+    <option value="DoC/Federal">DoC/Federal</option>
+    <option value="NSF/DoD">NSF/DoD</option>
+    <option value="NSF/Private">NSF/Private</option>
+    <option value="Google">Google</option>
+    <option value="Microsoft">Microsoft</option>
+  </select>
 
-    <label for="focusFilter" style="margin: 0 1rem; color: #f1f5f9;">Focus Area:</label>
-    <select id="focusFilter">
-      <option value="all">All</option>
-      <option value="Quantum Networking">Quantum Networking</option>
-      <option value="Quantum Communication">Quantum Communication</option>
-      <option value="Quantum Simulation">Quantum Simulation</option>
-      <option value="Quantum Materials">Quantum Materials</option>
-      <option value="Superconducting QC">Superconducting QC</option>
-      <option value="Trapped‑ion QC">Trapped‑ion QC</option>
-      <option value="Topological QC">Topological QC</option>
-    </select>
-  </div>
+  <label for="focusFilter" style="margin: 0 1rem; color: #f1f5f9;">Focus Area:</label>
+  <select id="focusFilter">
+    <option value="all">All</option>
+    <option value="Quantum Materials & Networking Foundry">Quantum Materials & Networking Foundry</option>
+    <option value="Quantum Error Correction & Co‑design">Quantum Error Correction & Co‑design</option>
+    <option value="Superconducting Quantum Systems & Sensing">Superconducting Quantum Systems & Sensing</option>
+    <option value="Quantum Algorithms & Device Co‑design">Quantum Algorithms & Device Co‑design</option>
+    <option value="Topological Quantum Materials & Sensing">Topological Quantum Materials & Sensing</option>
+    <option value="Superconducting QC">Superconducting QC</option>
+    <option value="Quantum Networking">Quantum Networking</option>
+    <option value="Trapped‑ion QC">Trapped‑ion QC</option>
+    <option value="Foundry for Quantum Devices">Foundry for Quantum Devices</option>
+    <option value="Nanomaterials for QIS">Nanomaterials for QIS</option>
+    <option value="Quantum Communication">Quantum Communication</option>
+    <option value="Light-Matter QIS">Light-Matter QIS</option>
+    <option value="Materials for Quantum Computing">Materials for Quantum Computing</option>
+    <option value="Quantum Startups">Quantum Startups</option>
+    <option value="QC for Security">QC for Security</option>
+    <option value="Benchmarking QC">Benchmarking QC</option>
+    <option value="Quantum Simulation">Quantum Simulation</option>
+    <option value="Topological QC">Topological QC</option>
+  </select>
+</div>
+
 
   <p id="sandbox-count" style="text-align:center; padding: 1rem; font-size: 1.1rem; color: #60a5fa;"></p>
   <div id="map"></div>

@@ -1,6 +1,3 @@
-// This is sandbox-data.js
-// Stores all sandbox locations and their info
-
 window.data = [
   {
     name: "Q‑NEXT",
@@ -83,3 +80,22 @@ window.data = [
     lng: -71.1167,
     link: "https://quantum.harvard.edu/"
   },
+  {
+    name: "Berkeley Quantum Information Center",
+    institution: "UC Berkeley",
+    focus: "Quantum Simulation",
+    funding: "DOE",
+    lat: 37.8715,
+    lng: -122.2730,
+    link: "https://quantum.berkeley.edu/"
+  },
+  {
+    name: "Stanford Q-Farm",
+    institution: "Stanford University",
+    focus: "Light-Matter QIS",
+    funding: "NSF / Private",
+    lat: 37.4275,
+    lng: -122.1697,
+    link: "https://qfarm.stanford.edu/"
+  }
+];

@@ -1,4 +1,26 @@
-<main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Sandbox Locator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
+    crossorigin=""
+  ></script>
+</head>
+<body style="margin: 0; background-color: #0f172a; font-family: 'Inter', sans-serif;">
+  <!-- main layout content starts here -->
+  <main>
+ <main>
     <div id="filters" style="text-align:center; padding: 1rem;">
       <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
       <select id="fundingFilter">
@@ -89,6 +111,14 @@
       </div>
     </section>
   </main>
+  <script src="sandbox-data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
+
+  </main>
+
+  <!-- Load JavaScript files -->
   <script src="sandbox-data.js"></script>
   <script src="main.js"></script>
 </body>

@@ -50,6 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return matchFunding && matchFocus;
     });
 
+    // Reset button logic
+document.getElementById("resetFilters").addEventListener("click", () => {
+  document.getElementById("fundingFilter").value = "all";
+  document.getElementById("focusFilter").value = "all";
+  renderMap(data);
+});
+
+
     renderMap(filtered);
   }
 });

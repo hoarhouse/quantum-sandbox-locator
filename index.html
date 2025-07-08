@@ -18,13 +18,82 @@
   ></script>
 </head>
 <body style="margin: 0; background-color: #0f172a; font-family: 'Inter', sans-serif;">
-  <!-- main layout content starts here -->
+
   <main>
-    <!-- all the HTML I gave you earlier goes here -->
-    <!-- include your updated filters, map div, sidebar, etc -->
+    <div id="filters" style="text-align:center; padding: 1rem;">
+      <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
+      <select id="fundingFilter">
+        <option value="all">All</option>
+        <option value="DOE">DOE</option>
+        <option value="NSF">NSF</option>
+        <option value="CHIPS">CHIPS</option>
+        <option value="DoD">DoD</option>
+        <option value="Private">Private</option>
+      </select>
+
+      <label for="focusFilter" style="margin: 0 1rem; color: #f1f5f9;">Focus Area:</label>
+      <select id="focusFilter">
+        <option value="all">All</option>
+        <option value="Quantum Networking">Quantum Networking</option>
+        <option value="Quantum Communication">Quantum Communication</option>
+        <option value="Quantum Simulation">Quantum Simulation</option>
+        <option value="Quantum Materials">Quantum Materials</option>
+        <option value="Superconducting QC">Superconducting QC</option>
+        <option value="Trapped‑ion QC">Trapped‑ion QC</option>
+        <option value="Topological QC">Topological QC</option>
+      </select>
+
+      <div style="margin-top: 1rem;">
+        <button id="resetFilters" style="padding: 0.5rem 1rem; background-color: #1e40af; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem;">Reset Filters</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <button id="toggleList" style="padding: 0.5rem 1rem; background-color: #0f172a; color: white; border: 1px solid #60a5fa; border-radius: 6px; cursor: pointer; font-size: 1rem;">Show Sandbox List</button>
+      </div>
+    </div>
+
+    <p id="sandbox-count" style="text-align:center; padding: 1rem; font-size: 1.1rem; color: #60a5fa;"></p>
+    <div id="map" style="height: 600px;"></div>
+
+    <!-- Sidebar List Container -->
+    <div id="sandboxListPanel" style="
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 300px;
+      background: #1e293b;
+      overflow-y: auto;
+      padding: 1rem;
+      z-index: 9999;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    ">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="color: #93c5fd;">Visible Sandboxes</h2>
+        <button id="closeSidebar" style="background: none; border: none; color: #f1f5f9; font-size: 1.2rem; cursor: pointer;">❌</button>
+      </div>
+      <ul id="sandboxList" style="list-style: none; padding-left: 0; color: #f1f5f9;"></ul>
+    </div>
+
+    <section class="info" style="padding: 2rem; color: #f1f5f9;">
+      <h2>What is a Quantum Sandbox?</h2>
+      <p>Quantum sandboxes are federally funded testbeds and programs across the U.S. enabling quantum research, prototyping, and real-world experimentation. These are sponsored by DOE, NIST, NSF, and the CHIPS Act to accelerate the U.S. quantum ecosystem.</p>
+
+      <h3>Upcoming Deadlines & Funding</h3>
+      <ul>
+        <li>DOE Quantum Infrastructure Call – Sept 2025</li>
+        <li>NSF Quantum Leap Challenge Proposals – Oct 2025</li>
+      </ul>
+
+      <div class="signup-teaser">
+        <p>🔔 Want funding alerts? <a href="#" style="color: #60a5fa;">Join our grant tracker</a>.</p>
+      </div>
+    </section>
   </main>
 
-  <!-- Load JavaScript files -->
   <script src="sandbox-data.js"></script>
   <script src="main.js"></script>
 </body>

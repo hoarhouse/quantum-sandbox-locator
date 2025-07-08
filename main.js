@@ -92,4 +92,4 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("closeSidebar").addEventListener("click", () => {
   document.getElementById("sandboxListPanel").style.display = "none";
 });
-
+renderMap(data);

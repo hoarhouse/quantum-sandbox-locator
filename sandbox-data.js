@@ -1,4 +1,4 @@
-const sandboxData = [
+window.sandboxData = [
   {
     name: "Q‑NEXT",
     institution: "Argonne National Laboratory",

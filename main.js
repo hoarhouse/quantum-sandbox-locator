@@ -34,30 +34,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Initial render
-  renderMap(data);
+ function renderMap(filteredData) {
+  // Remove existing markers
+  markers.forEach(marker => map.removeLayer(marker));
+  markers.length = 0;
 
-  // Filter listeners
-  document.getElementById("fundingFilter").addEventListener("change", applyFilters);
-  document.getElementById("focusFilter").addEventListener("change", applyFilters);
+  // Add new filtered markers
+  filteredData.forEach(site => {
+    const marker = L.marker([site.lat, site.lng]).addTo(map);
+    marker.bindPopup(
+      `<strong>${site.name}</strong><br/>
+       <em>${site.institution}</em><br/>
+       Focus: ${site.focus}<br/>
+       Funding: ${site.funding}<br/>
+       <a href="${site.link}" target="_blank">Learn more</a>`
+    );
+    markers.push(marker);
+  });
 
-  function applyFilters() {
-    const funding = document.getElementById("fundingFilter").value;
-    const focus = document.getElementById("focusFilter").value;
-
-    const filtered = data.filter(site => {
-      const matchFunding = funding === "all" || site.funding.includes(funding);
-      const matchFocus = focus === "all" || site.focus === focus;
-      return matchFunding && matchFocus;
-    });
-
-    // Reset button logic
-document.getElementById("resetFilters").addEventListener("click", () => {
-  document.getElementById("fundingFilter").value = "all";
-  document.getElementById("focusFilter").value = "all";
-  renderMap(data);
-});
-
-
-    renderMap(filtered);
+  // Update sandbox count
+  const countEl = document.getElementById("sandbox-count");
+  if (countEl) {
+    countEl.textContent = `${filteredData.length} Quantum Sandboxes Shown`;
   }
-});
+
+  // ✅ Update sidebar too
+  updateSidebar(filteredData);
+}

@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Hello Test</title>
+  <title>Hello Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
+    crossorigin=""
+  />
+
+  <style>
+    body {
+      background: #111;
+      color: #0f0;
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+
+    #map {
+      height: 300px;
+      width: 100%;
+      border: 2px solid #333;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-<body style="background: #111; color: #0f0; font-family: sans-serif; padding: 2rem;">
+<body>
+
   <h1>hello</h1>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
+    crossorigin=""
+  ></script>
+
+  <script>
+    const map = L.map('map').setView([39.8283, -98.5795], 4); // U.S. center
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
+
 </body>
 </html>

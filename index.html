@@ -2,78 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quantum Sandbox Locator</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
-    crossorigin=""
-  />
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
-    crossorigin=""
-  ></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- OpenLayers CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.5.2/ol.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #f1f5f9;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #60a5fa;
+    }
+
+    #map {
+      width: 100%;
+      height: 600px;
+      margin: 2rem auto;
+      border: 2px solid #334155;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-<body style="margin: 0; background-color: #0f172a; font-family: 'Inter', sans-serif;">
+<body>
 
-  <main style="padding: 1rem; max-width: 1100px; margin: 0 auto;">
-    <h1 class="page-title" style="color: #93c5fd; font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Quantum Sandbox Locator</h1>
+  <h1>Quantum Sandbox Locator</h1>
 
-    <!-- Filters -->
-    <div id="filters" style="text-align:center; margin-bottom: 1rem;">
-      <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
-      <select id="fundingFilter">
-        <option value="all">All</option>
-        <option value="DOE">DOE</option>
-        <option value="NSF">NSF</option>
-        <option value="CHIPS">CHIPS</option>
-        <option value="DoD">DoD</option>
-        <option value="Private">Private</option>
-      </select>
+  <div id="map"></div>
 
-      <label for="focusFilter" style="margin: 0 1rem; color: #f1f5f9;">Focus Area:</label>
-      <select id="focusFilter">
-        <option value="all">All</option>
-        <option value="Quantum Networking">Quantum Networking</option>
-        <option value="Quantum Communication">Quantum Communication</option>
-        <option value="Quantum Simulation">Quantum Simulation</option>
-        <option value="Quantum Materials">Quantum Materials</option>
-        <option value="Superconducting QC">Superconducting QC</option>
-        <option value="Trapped‑ion QC">Trapped‑ion QC</option>
-        <option value="Topological QC">Topological QC</option>
-      </select>
+  <footer>
+    &copy; 2025 Quantum Sandbox Project · OpenLayers Map
+  </footer>
 
-      <button id="resetFilters" style="margin-left: 1rem; padding: 0.3rem 0.7rem;">Reset</button>
-    </div>
+  <!-- OpenLayers JS -->
+  <script src="https://cdn.jsdelivr.net/npm/ol@v7.5.2/dist/ol.js"></script>
 
-    <!-- Sandbox Count -->
-    <p id="sandbox-count" style="text-align:center; font-size: 1.1rem; color: #60a5fa;"></p>
+  <script>
+    const map = new ol.Map({
+      target: 'map',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([-98.5795, 39.8283]), // Center of the U.S.
+        zoom: 4
+      })
+    });
+  </script>
 
-    <!-- Map Container -->
-    <div id="map" style="height: 600px; width: 100%; border: 2px solid #334155; border-radius: 8px; margin-bottom: 2rem;"></div>
-
-    <!-- Info Section -->
-    <section class="info" style="color: #f1f5f9;">
-      <h2 style="color: #93c5fd;">What is a Quantum Sandbox?</h2>
-      <p>Quantum sandboxes are federally funded testbeds and programs across the U.S. enabling quantum research, prototyping, and real-world experimentation. These are sponsored by DOE, NIST, NSF, and the CHIPS Act to accelerate the U.S. quantum ecosystem.</p>
-
-      <h3 style="color: #93c5fd;">Upcoming Deadlines & Funding</h3>
-      <ul>
-        <li>DOE Quantum Infrastructure Call – Sept 2025</li>
-        <li>NSF Quantum Leap Challenge Proposals – Oct 2025</li>
-      </ul>
-
-      <div class="signup-teaser">
-        <p>🔔 Want funding alerts? <a href="#" style="color: #60a5fa;">Join our grant tracker</a>.</p>
-      </div>
-    </section>
-  </main>
-
-  <script src="sandbox-data.js"></script>
-  <script src="main.js"></script>
 </body>
 </html>

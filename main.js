@@ -1,15 +1,20 @@
-let map = L.map("map").setView([39.5, -98.35], 4);
+// Setup the Leaflet map
+const map = L.map("map").setView([39.8283, -98.5795], 4); // Centered on U.S.
+
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: '&copy; OpenStreetMap contributors',
+  maxZoom: 18,
+  attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
 let markers = [];
 
-// Render map with filtered data
+// Render all markers based on filtered data
 function renderMap(filteredData) {
+  // Remove old markers
   markers.forEach(marker => map.removeLayer(marker));
   markers = [];
 
+  // Add new markers
   filteredData.forEach(site => {
     const marker = L.marker([site.lat, site.lng]).addTo(map);
     marker.bindPopup(
@@ -22,12 +27,11 @@ function renderMap(filteredData) {
     markers.push(marker);
   });
 
+  // Update visible count
   const countEl = document.getElementById("sandbox-count");
   if (countEl) {
     countEl.textContent = `${filteredData.length} Quantum Sandboxes Shown`;
   }
-
-  updateSidebar(filteredData);
 }
 
 // Filter logic
@@ -35,64 +39,25 @@ function applyFilters() {
   const funding = document.getElementById("fundingFilter").value;
   const focus = document.getElementById("focusFilter").value;
 
-  let filtered = window.data;
-
-  if (funding !== "all") {
-    filtered = filtered.filter(item => item.funding.includes(funding));
-  }
-
-  if (focus !== "all") {
-    filtered = filtered.filter(item => item.focus.includes(focus));
-  }
+  const filtered = window.data.filter(site => {
+    const matchFunding = funding === "all" || site.funding.includes(funding);
+    const matchFocus = focus === "all" || site.focus.includes(focus);
+    return matchFunding && matchFocus;
+  });
 
   renderMap(filtered);
 }
 
-// Update sidebar list
-function updateSidebar(sites) {
-  const list = document.getElementById("sandboxList");
-  list.innerHTML = "";
-
-  sites.forEach(site => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${site.name}</strong><br/>
-      <small>${site.institution}</small><br/>
-      <a href="${site.link}" target="_blank" style="color: #60a5fa;">Visit</a>
-      <hr style="border-color: #334155;" />
-    `;
-    list.appendChild(li);
-  });
-}
-
-// Reset button logic
+// Reset filters
 document.getElementById("resetFilters").addEventListener("click", () => {
   document.getElementById("fundingFilter").value = "all";
   document.getElementById("focusFilter").value = "all";
   renderMap(window.data);
 });
 
-// Filter event listeners
+// Filter change listeners
 document.getElementById("fundingFilter").addEventListener("change", applyFilters);
 document.getElementById("focusFilter").addEventListener("change", applyFilters);
 
-// Sidebar toggle
-document.getElementById("toggleList").addEventListener("click", () => {
-  const panel = document.getElementById("sandboxListPanel");
-  panel.style.display = "block";
-  setTimeout(() => {
-    panel.style.transform = "translateX(0%)";
-  }, 10);
-});
-
-// Close sidebar
-document.getElementById("closeSidebar").addEventListener("click", () => {
-  const panel = document.getElementById("sandboxListPanel");
-  panel.style.transform = "translateX(100%)";
-  setTimeout(() => {
-    panel.style.display = "none";
-  }, 300);
-});
-
-// INITIALIZE
+// Initial render
 renderMap(window.data);

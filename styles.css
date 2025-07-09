@@ -1,4 +1,12 @@
 /* Font and background setup */
+#map {
+  height: 600px;
+  width: 100%;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;

@@ -100,3 +100,11 @@ main {
     width: 90%;
   }
 }
+#map {
+  height: 600px;
+  width: 100%;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+

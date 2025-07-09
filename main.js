@@ -73,6 +73,8 @@ function renderMarkers(sandboxes) {
 
   markersLayer.getSource().clear();
   markersLayer.getSource().addFeatures(features);
+  updateSidebar(sandboxes);
+
 }
 
 function updateCount(count) {
@@ -112,3 +114,39 @@ map.on('click', function (event) {
     overlay.setPosition(undefined);
   }
 });
+// Toggle sidebar
+const sidebar = document.getElementById("sandboxListPanel");
+const toggleBtn = document.getElementById("toggleSidebar");
+
+toggleBtn.addEventListener("click", () => {
+  const isOpen = sidebar.style.transform === "translateX(0%)";
+  sidebar.style.transform = isOpen ? "translateX(100%)" : "translateX(0%)";
+  sidebar.style.display = "block";
+  toggleBtn.textContent = isOpen ? "Show Sandbox List" : "Hide Sandbox List";
+});
+
+// Update sidebar content
+function updateSidebar(sandboxes) {
+  const list = document.getElementById("sandboxList");
+  list.innerHTML = "";
+
+  if (sandboxes.length === 0) {
+    const li = document.createElement("li");
+    li.textContent = "No sandboxes match the current filters.";
+    list.appendChild(li);
+    return;
+  }
+
+  sandboxes.forEach(site => {
+    const li = document.createElement("li");
+    li.style.marginBottom = "1rem";
+    li.innerHTML = `
+      <strong>${site.name}</strong><br/>
+      <em style="font-size: 0.9rem;">${site.institution}</em><br/>
+      <span style="font-size: 0.85rem;">Focus: ${site.focus}</span><br/>
+      <span style="font-size: 0.85rem;">Funding: ${site.funding}</span><br/>
+      <a href="${site.link}" target="_blank" style="color: #93c5fd;">Learn more</a>
+    `;
+    list.appendChild(li);
+  });
+}

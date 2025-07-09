@@ -87,6 +87,34 @@
 
   <p id="sandbox-count"></p>
 
+<div id="filters" style="text-align:center; padding: 1rem;">
+  <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
+  <select id="fundingFilter">
+    <option value="all">All</option>
+    <option value="DOE">DOE</option>
+    <option value="NSF">NSF</option>
+    <option value="CHIPS">CHIPS</option>
+    <option value="DoD">DoD</option>
+    <option value="Private">Private</option>
+  </select>
+
+  <label for="focusFilter" style="margin: 0 1rem; color: #f1f5f9;">Focus Area:</label>
+  <select id="focusFilter">
+    <option value="all">All</option>
+    <option value="Quantum Networking">Quantum Networking</option>
+    <option value="Quantum Communication">Quantum Communication</option>
+    <option value="Quantum Simulation">Quantum Simulation</option>
+    <option value="Quantum Materials">Quantum Materials</option>
+    <option value="Superconducting QC">Superconducting QC</option>
+    <option value="Trapped‑ion QC">Trapped‑ion QC</option>
+    <option value="Topological QC">Topological QC</option>
+  </select>
+
+  <button id="resetFilters" style="margin-left: 1rem;">Reset Filters</button>
+</div>
+
+<p id="sandbox-count" style="text-align:center; color: #60a5fa; font-weight: 500; font-size: 1rem;"></p>
+
   <div id="map"></div>
 
   <footer>

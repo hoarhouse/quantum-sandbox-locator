@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- OpenLayers CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.5.2/ol.css" />
 
   <style>
     body {
       margin: 0;
       padding: 2rem;
       background: #111;
-      font-family: sans-serif;
       color: #0f0;
+      font-family: sans-serif;
     }
 
     #map {
@@ -30,8 +30,8 @@
   <h1>hello</h1>
   <div id="map"></div>
 
-  <!-- OpenLayers JS -->
-  <script src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"></script>
+  <!-- OpenLayers JS (v7.5.2) -->
+  <script src="https://cdn.jsdelivr.net/npm/ol@v7.5.2/dist/ol.js"></script>
 
   <script>
     const map = new ol.Map({
@@ -42,7 +42,7 @@
         })
       ],
       view: new ol.View({
-        center: ol.proj.fromLonLat([-98.5795, 39.8283]), // Centered on U.S.
+        center: ol.proj.fromLonLat([-98.5795, 39.8283]), // U.S.
         zoom: 4
       })
     });

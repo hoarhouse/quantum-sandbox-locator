@@ -10,92 +10,38 @@ window.data = [
   },
   {
     name: "MIT Quantum Foundry",
-    institution: "MIT",
-    focus: "Foundry for Quantum Devices",
+    institution: "Massachusetts Institute of Technology",
+    focus: "Quantum Materials",
     funding: "NSF",
     lat: 42.3601,
     lng: -71.0942,
-    link: "https://research.mit.edu/quantum"
+    link: "https://research.mit.edu"
   },
   {
-    name: "Sandia Quantum Systems",
-    institution: "Sandia National Labs",
-    focus: "Superconducting QC",
+    name: "Sandia National Labs",
+    institution: "Sandia National Laboratories",
+    focus: "Quantum Sensing & Simulation",
     funding: "DOE",
-    lat: 35.0542,
+    lat: 35.0556,
     lng: -106.5408,
-    link: "https://www.sandia.gov/quantum/"
+    link: "https://www.sandia.gov"
   },
   {
     name: "Chicago Quantum Exchange",
     institution: "University of Chicago",
     focus: "Quantum Networking",
     funding: "DOE",
-    lat: 41.7886,
-    lng: -87.5987,
+    lat: 41.7897,
+    lng: -87.5997,
     link: "https://quantum.uchicago.edu/"
   },
   {
-    name: "Oak Ridge Quantum Testbed",
-    institution: "Oak Ridge National Lab",
-    focus: "Quantum Algorithms & Device Co‑design",
-    funding: "DOE",
-    lat: 36.0104,
-    lng: -84.2696,
-    link: "https://www.ornl.gov/"
-  },
-  {
-    name: "JILA Quantum Platforms",
-    institution: "University of Colorado Boulder",
-    focus: "Trapped‑ion QC",
-    funding: "NSF",
-    lat: 40.0150,
-    lng: -105.2705,
-    link: "https://jila.colorado.edu/"
-  },
-  {
-    name: "AWS Center for Quantum Computing",
-    institution: "Caltech / AWS",
-    focus: "Topological QC",
-    funding: "Private",
-    lat: 34.1377,
-    lng: -118.1253,
-    link: "https://aws.amazon.com/braket/"
-  },
-  {
-    name: "NIST Quantum Lab",
-    institution: "NIST",
-    focus: "Quantum Communication",
-    funding: "DoD",
-    lat: 39.1335,
-    lng: -77.2123,
-    link: "https://www.nist.gov/pml/quantum"
-  },
-  {
-    name: "Harvard Quantum Initiative",
-    institution: "Harvard University",
-    focus: "Quantum Materials",
-    funding: "NSF",
-    lat: 42.3770,
-    lng: -71.1167,
-    link: "https://quantum.harvard.edu/"
-  },
-  {
-    name: "Berkeley Quantum Information Center",
-    institution: "UC Berkeley",
+    name: "Oak Ridge Quantum Program",
+    institution: "Oak Ridge National Laboratory",
     focus: "Quantum Simulation",
     funding: "DOE",
-    lat: 37.8715,
-    lng: -122.2730,
-    link: "https://quantum.berkeley.edu/"
-  },
-  {
-    name: "Stanford Q-Farm",
-    institution: "Stanford University",
-    focus: "Quantum Networking",
-    funding: "Private",
-    lat: 37.4275,
-    lng: -122.1697,
-    link: "https://qfarm.stanford.edu/"
+    lat: 35.9292,
+    lng: -84.3103,
+    link: "https://www.ornl.gov"
   }
 ];

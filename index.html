@@ -22,12 +22,29 @@
       color: #60a5fa;
     }
 
+    #filters {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    select, button {
+      margin: 0.5rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
     #map {
       width: 100%;
       height: 600px;
       margin: 2rem auto;
       border: 2px solid #334155;
       border-radius: 8px;
+    }
+
+    #sandbox-count {
+      text-align: center;
+      color: #60a5fa;
+      font-size: 1.1rem;
     }
 
     footer {
@@ -42,6 +59,34 @@
 
   <h1>Quantum Sandbox Locator</h1>
 
+  <div id="filters">
+    <label for="fundingFilter">Funding Source:</label>
+    <select id="fundingFilter">
+      <option value="all">All</option>
+      <option value="DOE">DOE</option>
+      <option value="NSF">NSF</option>
+      <option value="CHIPS">CHIPS</option>
+      <option value="DoD">DoD</option>
+      <option value="Private">Private</option>
+    </select>
+
+    <label for="focusFilter">Focus Area:</label>
+    <select id="focusFilter">
+      <option value="all">All</option>
+      <option value="Quantum Networking">Quantum Networking</option>
+      <option value="Quantum Communication">Quantum Communication</option>
+      <option value="Quantum Simulation">Quantum Simulation</option>
+      <option value="Quantum Materials">Quantum Materials</option>
+      <option value="Superconducting QC">Superconducting QC</option>
+      <option value="Trapped‑ion QC">Trapped‑ion QC</option>
+      <option value="Topological QC">Topological QC</option>
+    </select>
+
+    <button id="resetFilters">Reset Filters</button>
+  </div>
+
+  <p id="sandbox-count"></p>
+
   <div id="map"></div>
 
   <footer>
@@ -51,20 +96,9 @@
   <!-- OpenLayers JS -->
   <script src="https://cdn.jsdelivr.net/npm/ol@v7.5.2/dist/ol.js"></script>
 
-  <script>
-    const map = new ol.Map({
-      target: 'map',
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: ol.proj.fromLonLat([-98.5795, 39.8283]), // Center of the U.S.
-        zoom: 4
-      })
-    });
-  </script>
+  <!-- Your data and JS functionality -->
+  <script src="sandbox-data.js"></script>
+  <script src="main.js"></script>
 
 </body>
 </html>

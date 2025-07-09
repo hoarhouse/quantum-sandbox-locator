@@ -1,5 +1,4 @@
-/* styles.css */
-
+/* Font and background setup */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -7,32 +6,97 @@ body {
   color: #f1f5f9;
 }
 
+main {
+  padding: 1rem;
+}
+
+/* Page Title */
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #60a5fa;
+  margin-bottom: 1.5rem;
+}
+
+/* Filters */
+.controls {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.controls label {
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+.controls select {
+  margin-right: 1rem;
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #334155;
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.controls button {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.controls button:hover {
+  background-color: #2563eb;
+}
+
+/* Map */
 #map {
   height: 600px;
   width: 100%;
-  border-top: 2px solid #1e40af;
-  border-bottom: 2px solid #1e40af;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  margin-bottom: 2rem;
 }
 
-select,
-button {
-  font-family: inherit;
-  font-size: 1rem;
-  margin: 0.3rem;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-}
-
-button {
-  cursor: pointer;
-}
-
-h2 {
-  margin-top: 0;
-}
-
-.signup-teaser {
-  margin-top: 1rem;
-  font-style: italic;
+/* Sandbox count */
+.count-display {
+  text-align: center;
+  font-size: 1.1rem;
   color: #93c5fd;
+  margin-bottom: 0.5rem;
+}
+
+/* Info Section */
+.info {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #1e293b;
+  border-radius: 8px;
+}
+
+.info h2, .info h3 {
+  color: #60a5fa;
+}
+
+.info a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .controls select, .controls button {
+    margin: 0.5rem 0;
+    width: 90%;
+  }
 }

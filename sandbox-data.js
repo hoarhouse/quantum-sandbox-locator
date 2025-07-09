@@ -20,7 +20,7 @@ window.data = [
   {
     name: "Sandia Quantum Systems",
     institution: "Sandia National Labs",
-    focus: "Superconducting Quantum Systems & Sensing",
+    focus: "Superconducting QC",
     funding: "DOE",
     lat: 35.0542,
     lng: -106.5408,
@@ -30,7 +30,7 @@ window.data = [
     name: "Chicago Quantum Exchange",
     institution: "University of Chicago",
     focus: "Quantum Networking",
-    funding: "DOE / NSF",
+    funding: "DOE",
     lat: 41.7886,
     lng: -87.5987,
     link: "https://quantum.uchicago.edu/"
@@ -48,7 +48,7 @@ window.data = [
     name: "JILA Quantum Platforms",
     institution: "University of Colorado Boulder",
     focus: "Trapped‑ion QC",
-    funding: "NSF / DoD",
+    funding: "NSF",
     lat: 40.0150,
     lng: -105.2705,
     link: "https://jila.colorado.edu/"
@@ -64,9 +64,9 @@ window.data = [
   },
   {
     name: "NIST Quantum Lab",
-    institution: "National Institute of Standards and Technology",
+    institution: "NIST",
     focus: "Quantum Communication",
-    funding: "DoC/Federal",
+    funding: "DoD",
     lat: 39.1335,
     lng: -77.2123,
     link: "https://www.nist.gov/pml/quantum"
@@ -92,8 +92,8 @@ window.data = [
   {
     name: "Stanford Q-Farm",
     institution: "Stanford University",
-    focus: "Light-Matter QIS",
-    funding: "NSF / Private",
+    focus: "Quantum Networking",
+    funding: "Private",
     lat: 37.4275,
     lng: -122.1697,
     link: "https://qfarm.stanford.edu/"

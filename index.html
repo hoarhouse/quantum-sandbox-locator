@@ -18,14 +18,14 @@
     crossorigin=""
   ></script>
 </head>
-<body>
-  <main>
-    <h1 class="page-title">Quantum Sandbox Locator</h1>
-<div id="map" style="height: 600px; width: 100%; border: 2px solid #334155; border-radius: 8px; margin-bottom: 2rem;"></div>
+<body style="margin: 0; background-color: #0f172a; font-family: 'Inter', sans-serif;">
 
+  <main style="padding: 1rem; max-width: 1100px; margin: 0 auto;">
+    <h1 class="page-title" style="color: #93c5fd; font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Quantum Sandbox Locator</h1>
 
-    <div class="controls">
-      <label for="fundingFilter">Funding Source:</label>
+    <!-- Filters -->
+    <div id="filters" style="text-align:center; margin-bottom: 1rem;">
+      <label for="fundingFilter" style="margin-right: 1rem; color: #f1f5f9;">Funding Source:</label>
       <select id="fundingFilter">
         <option value="all">All</option>
         <option value="DOE">DOE</option>
@@ -35,7 +35,7 @@
         <option value="Private">Private</option>
       </select>
 
-      <label for="focusFilter">Focus Area:</label>
+      <label for="focusFilter" style="margin: 0 1rem; color: #f1f5f9;">Focus Area:</label>
       <select id="focusFilter">
         <option value="all">All</option>
         <option value="Quantum Networking">Quantum Networking</option>
@@ -47,24 +47,28 @@
         <option value="Topological QC">Topological QC</option>
       </select>
 
-      <button id="resetFilters">Reset Filters</button>
+      <button id="resetFilters" style="margin-left: 1rem; padding: 0.3rem 0.7rem;">Reset</button>
     </div>
 
-    <p id="sandbox-count" class="count-display"></p>
-    <div id="map"></div>
+    <!-- Sandbox Count -->
+    <p id="sandbox-count" style="text-align:center; font-size: 1.1rem; color: #60a5fa;"></p>
 
-    <section class="info">
-      <h2>What is a Quantum Sandbox?</h2>
+    <!-- Map Container -->
+    <div id="map" style="height: 600px; width: 100%; border: 2px solid #334155; border-radius: 8px; margin-bottom: 2rem;"></div>
+
+    <!-- Info Section -->
+    <section class="info" style="color: #f1f5f9;">
+      <h2 style="color: #93c5fd;">What is a Quantum Sandbox?</h2>
       <p>Quantum sandboxes are federally funded testbeds and programs across the U.S. enabling quantum research, prototyping, and real-world experimentation. These are sponsored by DOE, NIST, NSF, and the CHIPS Act to accelerate the U.S. quantum ecosystem.</p>
 
-      <h3>Upcoming Deadlines & Funding</h3>
+      <h3 style="color: #93c5fd;">Upcoming Deadlines & Funding</h3>
       <ul>
         <li>DOE Quantum Infrastructure Call – Sept 2025</li>
         <li>NSF Quantum Leap Challenge Proposals – Oct 2025</li>
       </ul>
 
       <div class="signup-teaser">
-        <p>🔔 Want funding alerts? <a href="#">Join our grant tracker</a>.</p>
+        <p>🔔 Want funding alerts? <a href="#" style="color: #60a5fa;">Join our grant tracker</a>.</p>
       </div>
     </section>
   </main>

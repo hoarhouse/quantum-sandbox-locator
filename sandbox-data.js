@@ -1,4 +1,4 @@
-window.data = [
+window.sandboxData = [
   {
     name: "Q‑NEXT",
     institution: "Argonne National Laboratory",
@@ -18,30 +18,30 @@ window.data = [
     link: "https://research.mit.edu"
   },
   {
-    name: "Sandia National Labs",
-    institution: "Sandia National Laboratories",
-    focus: "Quantum Sensing & Simulation",
-    funding: "DOE",
-    lat: 35.0556,
-    lng: -106.5408,
-    link: "https://www.sandia.gov"
-  },
-  {
     name: "Chicago Quantum Exchange",
     institution: "University of Chicago",
     focus: "Quantum Networking",
     funding: "DOE",
     lat: 41.7897,
     lng: -87.5997,
-    link: "https://quantum.uchicago.edu/"
+    link: "https://quantum.uchicago.edu"
   },
   {
-    name: "Oak Ridge Quantum Program",
-    institution: "Oak Ridge National Laboratory",
+    name: "Oak Ridge Quantum Testbed",
+    institution: "Oak Ridge National Lab",
     focus: "Quantum Simulation",
     funding: "DOE",
-    lat: 35.9292,
-    lng: -84.3103,
+    lat: 35.9306,
+    lng: -84.3116,
     link: "https://www.ornl.gov"
+  },
+  {
+    name: "Sandia National Labs",
+    institution: "Sandia National Laboratories",
+    focus: "Quantum Sensing",
+    funding: "DOE",
+    lat: 35.0542,
+    lng: -106.5405,
+    link: "https://www.sandia.gov"
   }
 ];

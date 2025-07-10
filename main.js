@@ -14,7 +14,7 @@ const map = new ol.Map({
 const markerStyle = new ol.style.Style({
   image: new ol.style.Circle({
     radius: 8,
-    fill: new ol.style.Fill({ color: '#3b82f6' }),
+    fill: new ol.style.Fill({ color: '#5e72e4' }),
     stroke: new ol.style.Stroke({ color: '#ffffff', width: 2 })
   })
 });

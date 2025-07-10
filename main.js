@@ -27,17 +27,7 @@ map.addLayer(markersLayer);
 
 // Create popup
 const popup = document.createElement('div');
-popup.id = 'popup';
-popup.style.background = '#1e293b';
-popup.style.color = '#f1f5f9';
-popup.style.padding = '0.75rem';
-popup.style.borderRadius = '8px';
-popup.style.fontSize = '14px';
-popup.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
-popup.style.position = 'absolute';
-popup.style.bottom = '12px';
-popup.style.left = '-50px';
-popup.style.minWidth = '220px';
+popup.className = 'ol-popup';
 
 const overlay = new ol.Overlay({
   element: popup,
@@ -74,12 +64,11 @@ function renderMarkers(sandboxes) {
   markersLayer.getSource().clear();
   markersLayer.getSource().addFeatures(features);
   updateSidebar(sandboxes);
-
 }
 
 function updateCount(count) {
   const countEl = document.getElementById("sandbox-count");
-  countEl.textContent = `${count} Quantum Sandboxes Shown`;
+  countEl.textContent = `${count} Quantum Sandboxes`;
 }
 
 // Reset button logic
@@ -107,21 +96,21 @@ map.on('click', function (event) {
       <em>${site.institution}</em><br/>
       Focus: ${site.focus}<br/>
       Funding: ${site.funding}<br/>
-      <a href="${site.link}" target="_blank" style="color: #93c5fd;">Learn more</a>
+      <a href="${site.link}" target="_blank">Learn more</a>
     `;
     overlay.setPosition(feature.getGeometry().getCoordinates());
   } else {
     overlay.setPosition(undefined);
   }
 });
+
 // Toggle sidebar
 const sidebar = document.getElementById("sandboxListPanel");
 const toggleBtn = document.getElementById("toggleSidebar");
 
 toggleBtn.addEventListener("click", () => {
-  const isOpen = sidebar.style.transform === "translateX(0%)";
-  sidebar.style.transform = isOpen ? "translateX(100%)" : "translateX(0%)";
-  sidebar.style.display = "block";
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open');
   toggleBtn.textContent = isOpen ? "Show Sandbox List" : "Hide Sandbox List";
 });
 
@@ -132,20 +121,23 @@ function updateSidebar(sandboxes) {
 
   if (sandboxes.length === 0) {
     const li = document.createElement("li");
-    li.textContent = "No sandboxes match the current filters.";
+    li.className = "sandbox-item";
+    li.innerHTML = "<div class='sandbox-name'>No sandboxes match the current filters.</div>";
     list.appendChild(li);
     return;
   }
 
   sandboxes.forEach(site => {
     const li = document.createElement("li");
-    li.style.marginBottom = "1rem";
+    li.className = "sandbox-item";
     li.innerHTML = `
-      <strong>${site.name}</strong><br/>
-      <em style="font-size: 0.9rem;">${site.institution}</em><br/>
-      <span style="font-size: 0.85rem;">Focus: ${site.focus}</span><br/>
-      <span style="font-size: 0.85rem;">Funding: ${site.funding}</span><br/>
-      <a href="${site.link}" target="_blank" style="color: #93c5fd;">Learn more</a>
+      <div class="sandbox-name">${site.name}</div>
+      <div class="sandbox-institution">${site.institution}</div>
+      <div class="sandbox-details">
+        <span class="sandbox-tag">${site.focus}</span>
+        <span class="sandbox-tag">${site.funding}</span>
+      </div>
+      <a href="${site.link}" target="_blank" class="sandbox-link">Learn more →</a>
     `;
     list.appendChild(li);
   });

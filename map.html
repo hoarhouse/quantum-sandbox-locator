@@ -1,48 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Working Map</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
-    crossorigin=""
-  />
-
-  <!-- Local Map Style -->
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-    }
-    #map {
-      height: 100vh;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Map Test</title>
+    
+    <!-- OpenLayers CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.5.2/ol.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
-
-  <div id="map"></div>
-
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-o9N1j7kB16fK5fdyzI+06T6zpt+cC5p3tU9bNNTTCk0="
-    crossorigin=""
-  ></script>
-
-  <!-- Map Init -->
-  <script>
-    const map = L.map("map").setView([39.8283, -98.5795], 4);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-  </script>
+    <div id="map"></div>
+    
+    <!-- OpenLayers JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.5.2/dist/ol.js"></script>
+    
+    <script>
+        // Simple map initialization
+        const map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([-98.5795, 39.8283]),
+                zoom: 4
+            })
+        });
+        
+        // Add some markers from your data
+        const markerStyle = new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 8,
+                fill: new ol.style.Fill({ color: '#5e72e4' }),
+                stroke: new ol.style.Stroke({ color: '#ffffff', width: 2 })
+            })
+        });
+        
+        const markersLayer = new ol.layer.Vector({
+            source: new ol.source.Vector(),
+            style: markerStyle
+        });
+        
+        map.addLayer(markersLayer);
+        
+        // Add the sandbox locations
+        const sandboxData = [
+            {
+                name: "Q‑NEXT",
+                lat: 41.7056,
+                lng: -87.6132
+            },
+            {
+                name: "MIT Quantum Foundry",
+                lat: 42.3601,
+                lng: -71.0942
+            },
+            {
+                name: "Chicago Quantum Exchange",
+                lat: 41.7897,
+                lng: -87.5997
+            },
+            {
+                name: "Oak Ridge Quantum Testbed",
+                lat: 35.9306,
+                lng: -84.3116
+            },
+            {
+                name: "Sandia National Labs",
+                lat: 35.0542,
+                lng: -106.5405
+            }
+        ];
+        
+        // Add markers
+        const features = sandboxData.map(site => {
+            const feature = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([site.lng, site.lat])),
+                name: site.name
+            });
+            return feature;
+        });
+        
+        markersLayer.getSource().addFeatures(features);
+        
+        // Add popup
+        const popup = document.createElement('div');
+        popup.style.background = '#fff';
+        popup.style.padding = '10px';
+        popup.style.borderRadius = '5px';
+        popup.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        
+        const overlay = new ol.Overlay({
+            element: popup,
+            positioning: 'bottom-center',
+            offset: [0, -15],
+            stopEvent: false
+        });
+        
+        map.addOverlay(overlay);
+        
+        // Click handler
+        map.on('click', function (event) {
+            const feature = map.forEachFeatureAtPixel(event.pixel, f => f);
+            if (feature) {
+                popup.innerHTML = '<strong>' + feature.get('name') + '</strong>';
+                overlay.setPosition(feature.getGeometry().getCoordinates());
+            } else {
+                overlay.setPosition(undefined);
+            }
+        });
+    </script>
 </body>
 </html>

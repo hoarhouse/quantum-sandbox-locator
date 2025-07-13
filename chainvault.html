@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain Vault - Ransomware Can't Encrypt What It Can't Reach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        html { scroll-behavior: smooth; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out; }
+        .accordion-content { transition: max-height 0.3s ease-out; overflow: hidden; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-[#0a0e1a] to-[#1e293b] text-white">
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full bg-[#1a1d29]/95 backdrop-blur-sm z-50 border-b border-[rgba(79,70,229,0.2)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-[#4f46e5] to-[#7c3aed] rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.25-1.25a8.25 8.25 0 11-16.5 0 8.25 8.25 0 0116.5 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="text-xl font-bold text-white">Chain Vault</div>
+                            <div class="text-xs text-[#94a3b8] -mt-1">by Konvergence</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#solutions" class="text-[#94a3b8] hover:text-white px-3 py-2 text-sm font-medium transition-colors">Solutions</a>
+                        <a href="#chain-vault" class="text-white px-3 py-2 text-sm font-medium">Chain Vault</a>
+                        <a href="#pricing" class="text-[#94a3b8] hover:text-white px-3 py-2 text-sm font-medium transition-colors">Pricing</a>
+                        <a href="#resources" class="text-[#94a3b8] hover:text-white px-3 py-2 text-sm font-medium transition-colors">Resources</a>
+                        <a href="#contact" class="text-[#94a3b8] hover:text-white px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button class="bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white px-6 py-2 rounded-lg font-medium transition-all transform hover:scale-105">
+                        Schedule a Call
+                    </button>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-[#94a3b8] hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden bg-[#1a1d29] border-t border-[rgba(79,70,229,0.2)] hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#solutions" class="text-[#94a3b8] hover:text-white block px-3 py-2 text-base font-medium transition-colors">Solutions</a>
+                <a href="#chain-vault" class="text-white block px-3 py-2 text-base font-medium">Chain Vault</a>
+                <a href="#pricing" class="text-[#94a3b8] hover:text-white block px-3 py-2 text-base font-medium transition-colors">Pricing</a>
+                <a href="#resources" class="text-[#94a3b8] hover:text-white block px-3 py-2 text-base font-medium transition-colors">Resources</a>
+                <a href="#contact" class="text-[#94a3b8] hover:text-white block px-3 py-2 text-base font-medium transition-colors">Contact</a>
+                <button class="w-full mt-4 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white px-6 py-2 rounded-lg font-medium transition-all">
+                    Schedule a Call
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-32 relative overflow-hidden bg-gradient-to-b from-[#0a0e1a] to-[#1e293b]">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#4f46e5]/5 to-[#7c3aed]/5"></div>
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center bg-[rgba(30,41,59,0.6)] backdrop-blur-sm px-4 py-2 rounded-full border border-[rgba(79,70,229,0.3)] mb-8">
+                    <div class="w-2 h-2 bg-[#4f46e5] rounded-full mr-3 animate-pulse"></div>
+                    <span class="text-sm text-[#e2e8f0] font-medium">Trusted by 500+ companies worldwide</span>
+                </div>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.9] mb-6 tracking-tight">
+                    <span class="block bg-gradient-to-r from-[#ffffff] via-[#e2e8f0] to-[#ffffff] bg-clip-text text-transparent">
+                        Ransomware Can't
+                    </span>
+                    <span class="block bg-gradient-to-r from-[#4f46e5] via-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
+                        Encrypt What It
+                    </span>
+                    <span class="block bg-gradient-to-r from-[#ffffff] via-[#e2e8f0] to-[#ffffff] bg-clip-text text-transparent">
+                        Can't Reach
+                    </span>
+                </h1>
+                <p class="text-lg sm:text-xl text-[#94a3b8] mb-10 max-w-3xl mx-auto leading-relaxed font-medium">
+                    Chain Vault creates ransomware-proof copies of your data, that are encrypted, replicated, and distributed, 
+                    <span class="text-[#e2e8f0] font-semibold"> without changing your existing systems.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button class="group relative bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#4f46e5]/25 transform hover:-translate-y-1">
+                        <span class="relative z-10 flex items-center">
+                            Schedule a Call
+                            <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </span>
+                    </button>
+                    <button class="group text-[#e2e8f0] hover:text-[#4f46e5] px-10 py-5 font-semibold text-lg transition-all duration-300 border border-[rgba(79,70,229,0.3)] hover:border-[#4f46e5] rounded-xl backdrop-blur-sm bg-[rgba(30,41,59,0.4)] hover:bg-[rgba(30,41,59,0.6)]">
+                        <span class="flex items-center">
+                            Get Started
+                            <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                    <div class="flex items-center justify-center space-x-3 bg-[rgba(30,41,59,0.4)] backdrop-blur-sm px-6 py-5 rounded-xl border border-[rgba(79,70,229,0.2)]">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[#e2e8f0] font-semibold text-base">Built on Filecoin</div>
+                            <div class="text-[#94a3b8] text-sm">Network</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3 bg-[rgba(30,41,59,0.4)] backdrop-blur-sm px-6 py-5 rounded-xl border border-[rgba(79,70,229,0.2)]">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.25-1.25a8.25 8.25 0 11-16.5 0 8.25 8.25 0 0116.5 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[#e2e8f0] font-semibold text-base">Cryptographic Proof</div>
+                            <div class="text-[#94a3b8] text-sm">of Storage</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3 bg-[rgba(30,41,59,0.4)] backdrop-blur-sm px-6 py-5 rounded-xl border border-[rgba(79,70,229,0.2)]">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[#e2e8f0] font-semibold text-base">Automatic Slashing</div>
+                            <div class="text-[#94a3b8] text-sm">Protection</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3 bg-[rgba(30,41,59,0.4)] backdrop-blur-sm px-6 py-5 rounded-xl border border-[rgba(79,70,229,0.2)]">
+                        <div class="w-12 h-12 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[#e2e8f0] font-semibold text-base">Open-Source</div>
+                            <div class="text-[#94a3b8] text-sm">Transparency</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof Statistics -->
+                <div class="mt-16 pt-12 border-t border-[rgba(79,70,229,0.2)]">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1">100%</div>
+                            <div class="text-sm text-[#94a3b8]">Managed Service</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1">24/7</div>
+                            <div class="text-sm text-[#94a3b8]">Live Support</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1">$0</div>
+                            <div class="text-sm text-[#94a3b8]">Onboarding Fee</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-white mb-1">60 Minute</div>
+                            <div class="text-sm text-[#94a3b8]">Recovery Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The complete code continues with all sections... -->
+    <!-- Due to length limits, I'll provide the rest of the major sections -->
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleAccordion(index) {
+            const contents = document.querySelectorAll('.accordion-content');
+            const icons = document.querySelectorAll('.accordion-icon');
+            
+            contents.forEach((content, i) => {
+                if (i === index) {
+                    content.classList.toggle('hidden');
+                    icons[i].classList.toggle('rotate-180');
+                } else {
+                    content.classList.add('hidden');
+                    icons[i].classList.remove('rotate-180');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+<!-- Ransomware Industry Statistics -->
+<section class="py-20 bg-gradient-to-b from-[#0a0e1a] to-[#1e293b]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ransomware Industry Reality</h2>
+            <p class="text-xl text-[#94a3b8]">Ransomware gangs are choosing their next target. Make sure it's not you.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
+            <!-- Manufacturing -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-6 rounded-xl border border-[rgba(79,70,229,0.2)] text-center relative overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="text-3xl mb-3 text-[#ef4444]">🏭</div>
+                <div class="text-lg font-bold text-white mb-2">Manufacturing</div>
+                <div class="text-4xl font-black text-white mb-2">71%</div>
+                <div class="text-xs uppercase tracking-wider text-[#94a3b8] mb-3 font-semibold">of Industrial Ransomware Attacks</div>
+                <div class="text-xs text-[#e2e8f0] leading-relaxed mb-3">394 incidents in Q3 2024 alone, making manufacturing the most targeted industrial sector</div>
+                <div class="text-xs text-[#64748b] pt-2 border-t border-[rgba(79,70,229,0.2)]">
+                    Dragos Industrial Analysis Q3 2024
+                </div>
+            </div>
+            <!-- Healthcare -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-6 rounded-xl border border-[rgba(79,70,229,0.2)] text-center relative overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="text-3xl mb-3 text-[#10b981]">🏥</div>
+                <div class="text-lg font-bold text-white mb-2">Healthcare</div>
+                <div class="text-3xl font-black text-white mb-2">$10.93M</div>
+                <div class="text-xs uppercase tracking-wider text-[#94a3b8] mb-3 font-semibold">Average Breach Cost</div>
+                <div class="text-xs text-[#e2e8f0] leading-relaxed mb-3">14th consecutive year as the most expensive industry for data breaches</div>
+                <div class="text-xs text-[#64748b] pt-2 border-t border-[rgba(79,70,229,0.2)]">
+                    IBM Cost of Data Breach Report 2024
+                </div>
+            </div>
+            <!-- Accounting -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-6 rounded-xl border border-[rgba(79,70,229,0.2)] text-center relative overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="text-3xl mb-3 text-[#f59e0b]">⚖️</div>
+                <div class="text-lg font-bold text-white mb-2">Accounting</div>
+                <div class="text-4xl font-black text-white mb-2">85%</div>
+                <div class="text-xs uppercase tracking-wider text-[#94a3b8] mb-3 font-semibold">of Small Firms Targeted</div>
+                <div class="text-xs text-[#e2e8f0] leading-relaxed mb-3">Accounting firms identified as "most designated" targets among small businesses</div>
+                <div class="text-xs text-[#64748b] pt-2 border-t border-[rgba(79,70,229,0.2)]">
+                    CPAdirectory Industry Analysis 2024
+                </div>
+            </div>
+            <!-- Communications -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-6 rounded-xl border border-[rgba(79,70,229,0.2)] text-center relative overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="text-3xl mb-3 text-[#06b6d4]">📡</div>
+                <div class="text-lg font-bold text-white mb-2">Communications</div>
+                <div class="text-4xl font-black text-white mb-2">$1.82M</div>
+                <div class="text-xs uppercase tracking-wider text-[#94a3b8] mb-3 font-semibold">Average Data Recovery Cost</div>
+                <div class="text-xs text-[#e2e8f0] leading-relaxed mb-3">Average cost to restore systems and data after ransomware attack, excluding ransom payment</div>
+                <div class="text-xs text-[#64748b] pt-2 border-t border-[rgba(79,70,229,0.2)]">
+                    CybelAngel Ransomware Cost Analysis 2024
+                </div>
+            </div>
+            <!-- IT & Technology -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-6 rounded-xl border border-[rgba(79,70,229,0.2)] text-center relative overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="text-3xl mb-3 text-[#8b5cf6]">💻</div>
+                <div class="text-lg font-bold text-white mb-2">IT & Technology</div>
+                <div class="text-4xl font-black text-white mb-2">500</div>
+                <div class="text-xs uppercase tracking-wider text-[#94a3b8] mb-3 font-semibold">Organizations Victimized</div>
+                <div class="text-xs text-[#e2e8f0] leading-relaxed mb-3">RansomHub gang claimed 500+ victim organizations in second half of 2024 alone</div>
+                <div class="text-xs text-[#64748b] pt-2 border-t border-[rgba(79,70,229,0.2)]">
+                    ESET Research December 2024
+                </div>
+            </div>
+        </div>
+        <div class="text-center bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-2xl p-8">
+            <h3 class="text-2xl font-bold text-white mb-4">Don't Become Another Statistic</h3>
+            <p class="text-lg text-purple-100 mb-6 max-w-2xl mx-auto">
+                Chain Vault's immutable blockchain protection ensures your data can never be encrypted, deleted, or held hostage by ransomware attacks.
+            </p>
+            <button class="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 backdrop-blur-sm border border-white/20">
+                Protect Your Data Now
+            </button>
+        </div>
+    </div>
+</section>
+<!-- How It Works -->
+<section class="py-20 bg-gradient-to-b from-[#0a0e1a] to-[#1e293b]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">How Chain Vault Works</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+            <!-- Step 1 -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-8 rounded-2xl border border-[rgba(79,70,229,0.2)] hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="w-16 h-16 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-bold text-white">1</div>
+                <h3 class="text-2xl font-semibold mb-6 text-white text-center">Upload Your Data</h3>
+                <p class="text-[#94a3b8] leading-relaxed mb-6 text-center">
+                    Send your critical files to Chain Vault manually through our dashboard or automatically via our API.
+                </p>
+                <p class="text-[#94a3b8] leading-relaxed text-center text-sm">
+                    Choose your upload method: drag and drop files, schedule automatic backups, or integrate with your existing systems using our API.
+                </p>
+            </div>
+            <!-- Step 2 -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-8 rounded-2xl border border-[rgba(79,70,229,0.2)] hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="w-16 h-16 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-bold text-white">2</div>
+                <h3 class="text-2xl font-semibold mb-6 text-white text-center">We Secure and Distribute</h3>
+                <p class="text-[#94a3b8] leading-relaxed mb-6 text-center">
+                    Your data is immediately encrypted, replicated multiple times, and distributed across different data centers worldwide.
+                </p>
+                <p class="text-[#94a3b8] leading-relaxed text-center text-sm">
+                    Using military-grade encryption, we create multiple copies of your data and store them on separate servers in different geographic locations.
+                </p>
+            </div>
+            <!-- Step 3 -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-8 rounded-2xl border border-[rgba(79,70,229,0.2)] hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="w-16 h-16 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-bold text-white">3</div>
+                <h3 class="text-2xl font-semibold mb-6 text-white text-center">Daily Verified Proof</h3>
+                <p class="text-[#94a3b8] leading-relaxed mb-6 text-center">
+                    Every day, you receive cryptographic proof that your data is safely stored and continuously monitored.
+                </p>
+                <p class="text-[#94a3b8] leading-relaxed text-center text-sm">
+                    Our system automatically verifies the integrity and availability of your data 24/7. You get daily confirmation that everything is secure.
+                </p>
+            </div>
+            <!-- Step 4 -->
+            <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm p-8 rounded-2xl border border-[rgba(79,70,229,0.2)] hover:transform hover:-translate-y-2 transition-all duration-300 hover:border-[rgba(79,70,229,0.4)] hover:shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                <div class="w-16 h-16 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-8 text-2xl font-bold text-white">4</div>
+                <h3 class="text-2xl font-semibold mb-6 text-white text-center">Instant Recovery Access</h3>
+                <p class="text-[#94a3b8] leading-relaxed mb-6 text-center">
+                    Need your data back? Download any file or complete backup within minutes, anytime, for any reason.
+                </p>
+                <p class="text-[#94a3b8] leading-relaxed text-center text-sm">
+                    Whether it's a single document or your entire data archive, recovery is fast and simple. No waiting periods, no complex procedures.
+                </p>
+            </div>
+        </div>
+
+        <!-- How Chain Vault Store's Your Data -->
+        <div class="mb-20">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">How Chain Vault Store's Your Data</h2>
+                <p class="text-xl text-[#94a3b8] max-w-4xl mx-auto leading-relaxed">
+                    Chain Vault uses the Filecoin network to create multiple encrypted copies of your data across different global locations.
+                </p>
+                <p class="text-xl text-[#94a3b8] max-w-4xl mx-auto leading-relaxed mt-2">
+                    Choose the storage level that fits your needs.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Standard Storage -->
+                <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm rounded-2xl p-8 border border-[rgba(79,70,229,0.2)] hover:border-[rgba(79,70,229,0.4)] transition-colors relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Standard Storage</h3>
+                        <p class="text-[#94a3b8]">(from $0.75/TB/MO)</p>
+                    </div>
+                    <p class="text-[#94a3b8] text-center leading-relaxed mb-8">
+                        Your data is encrypted and stored across multiple Filecoin providers with guaranteed 12-month retention.
+                    </p>
+                    <div class="border-l-4 border-[#4f46e5] pl-6 bg-[rgba(79,70,229,0.1)] py-4 rounded-r-lg">
+                        <p class="text-[#4f46e5] font-semibold mb-2">Included:</p>
+                        <p class="text-[#94a3b8] text-sm leading-relaxed">
+                            Multi-provider replication, cryptographic proof of storage, automated monitoring, and full recovery access.
+                        </p>
+                    </div>
+                </div>
+                <!-- Verified Storage -->
+                <div class="bg-[rgba(30,41,59,0.8)] backdrop-blur-sm rounded-2xl p-8 border border-[rgba(79,70,229,0.2)] hover:border-[rgba(79,70,229,0.4)] transition-colors relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed]"></div>
+                    <div class="text-center mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Verified Storage</h3>
+                        <p class="text-[#4f46e5]">(+$1.00/TB/MO)</p>
+                    </div>
+                    <p class="text-[#94a3b8] text-center leading-relaxed mb-8">
+                        Premium upgrade with enhanced replication, faster retrieval, and elite storage providers for mission-critical data.
+                    </p>
+                    <div class="border-l-4 border-[#4f46e5] pl-6 bg-[rgba(79,70,229,0.1)] py-4 rounded-r-lg">
+                        <p class="text-[#4f46e5] font-semibold mb-2">Enhanced:</p>
+                        <p class="text-[#94a3b8] text-sm leading-relaxed">
+                            4-5x replication, 10x provider incentives, faster recovery times, and dedicated DataCap workflow management.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
